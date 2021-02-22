@@ -18,21 +18,19 @@
             <ul class="sidebar-menu">
                 <li class="menu-header">Master User</li>
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-folder"></i><span>Master</span></a>
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i><span>Master User</span></a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="<?= base_url('golongan/index'); ?>">Golongan</a></li>
-                        <li><a class="nav-link" href="<?= base_url('jabatan/index'); ?>">Jabatan</a></li>
-                        <li><a class="nav-link" href="<?= base_url('pegawai/index'); ?>">Pegawai</a></li>
-                        <li><a class="nav-link" href="<?= base_url('kategori_surat/index'); ?>">Kategori Surat</a></li>
-                        <li><a class="nav-link" href="<?= base_url('pengirim_surat/index'); ?>">Pengirim Surat</a></li>
-                        <li><a class="nav-link" href="<?= base_url('tujuan_surat/index'); ?>">Tujuan Surat</a></li>
+                        <li><a class="nav-link" href="<?= base_url('operator/index'); ?>">Operator</a></li>
+                        <li><a class="nav-link" href="<?= base_url('mahasiswa/index'); ?>">Mahasiswa</a></li>
+
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-file"></i><span>Laporan</span></a>
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-graduate"></i><span>Beasiswa</span></a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="<?= base_url('laporan/surat_masuk'); ?>">Surat Masuk</a></li>
-                        <li><a class="nav-link" href="<?= base_url('laporan/surat_keluar'); ?>">Surat Keluar</a></li>
+                        <li><a class="nav-link" href="<?= base_url('beasiswa/index'); ?>">Beasiswa</a></li>
+                        <li><a class="nav-link" href="<?= base_url('pengajuan/index'); ?>">Pengajuan</a></li>
+                        <li><a class="nav-link" href="<?= base_url('laporan/index'); ?>">Laporan</a></li>
                     </ul>
                 </li>
 
