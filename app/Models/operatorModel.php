@@ -17,6 +17,7 @@ class operatorModel extends Model
             $query =  $this->select('users.id as id, nip, nama_lengkap, no_telp, email, name')
 
                 ->join('auth_groups ag', 'ag.id = users.level')
+                ->where('name', 'operator')
                 ->get();
 
             return $query->getResultArray();

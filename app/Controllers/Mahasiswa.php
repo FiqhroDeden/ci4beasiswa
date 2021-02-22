@@ -3,16 +3,16 @@
 namespace App\Controllers;
 
 
-use App\Models\operatorModel;
+use App\Models\mahasiswaModel;
 use App\Models\rolesModel;
 use App\Models\levelModel;
 
-class Operator extends BaseController
+class Mahasiswa extends BaseController
 {
     public function __construct()
     {
 
-        $this->operatorModel = new operatorModel();
+        $this->mahasiswaModel = new mahasiswaModel();
         $this->rolesModel = new rolesModel();
         $this->levelModel = new levelModel();
     }
@@ -20,21 +20,21 @@ class Operator extends BaseController
     {
         $data =
             [
-                'title' => 'Operator',
-                'pegawai' => $this->operatorModel->getOperator(),
+                'title' => 'Mahasiswa',
+                'mahasiswa' => $this->mahasiswaModel->getmahasiswa(),
                 'roles' => $this->rolesModel->getroles(),
                 'level' => $this->levelModel->getlevel(),
             ];
-        return view('operator/index', $data);
+        return view('mahasiswa/index', $data);
     }
     public function tambah()
     {
         $data =
             [
-                'title' => 'Tambah Operator',
+                'title' => 'Tambah Mahasiswa',
                 'roles' => $this->rolesModel->findAll(),
             ];
-        return view('operator/tambah', $data);
+        return view('mahasiswa/tambah', $data);
     }
     public function save()
     {
@@ -45,10 +45,12 @@ class Operator extends BaseController
         $pass_hash = password_hash(base64_encode(
             hash('sha384', $password, true)
         ), PASSWORD_DEFAULT, $options);
-        $this->operatorModel->save([
-            'nip' => $this->request->getVar('nip'),
+        $this->mahasiswaModel->save([
+            'nim' => $this->request->getVar('nim'),
             'nama_lengkap' => $this->request->getVar('nama_lengkap'),
+            'prodi' => $this->request->getVar('prodi'),
             'no_telp' => $this->request->getVar('no_telp'),
+            'alamat' => $this->request->getVar('alamat'),
             'email' => $this->request->getVar('email'),
             'level' => $this->request->getVar('group_id'),
             'username' => $this->request->getVar('username'),
@@ -69,8 +71,8 @@ class Operator extends BaseController
             'group_id' => $this->request->getVar('group_id'),
             'user_id' => $user_id,
         ]);
-        session()->setFlashdata('pesan', 'Data Operator berhasil ditambahkan.');
-        return redirect()->to('/operator');
+        session()->setFlashdata('pesan', 'Data mahasiswa berhasil ditambahkan.');
+        return redirect()->to('/mahasiswa');
     }
     public function edit($id)
     {
@@ -81,11 +83,11 @@ class Operator extends BaseController
 
         $data =
             [
-                'title' => 'Edit Operator',
-                'pegawai' => $this->operatorModel->getOperator($id),
+                'title' => 'Edit mahasiswa',
+                'mahasiswa' => $this->mahasiswaModel->getmahasiswa($id),
                 'roles' => $this->rolesModel->findAll(),
             ];
-        return view('operator/edit', $data);
+        return view('mahasiswa/edit', $data);
     }
     public function update()
     {
@@ -97,9 +99,11 @@ class Operator extends BaseController
 
         if ($oldlevel == $level) {
             if ($pass == null) {
-                $operator = [
-                    'nip' => $this->request->getVar('nip'),
+                $mahasiswa = [
+                    'nim' => $this->request->getVar('nim'),
                     'nama_lengkap' => $this->request->getVar('nama_lengkap'),
+                    'prodi' => $this->request->getVar('prodi'),
+                    'alamat' => $this->request->getVar('alamat'),
                     'no_telp' => $this->request->getVar('no_telp'),
                     'email' => $this->request->getVar('email'),
                     'level' => $this->request->getVar('group_id'),
@@ -114,9 +118,11 @@ class Operator extends BaseController
                 $pass_hash = password_hash(base64_encode(
                     hash('sha384', $password, true)
                 ), PASSWORD_DEFAULT, $options);
-                $operator = [
-                    'nip' => $this->request->getVar('nip'),
+                $mahasiswa = [
+                    'nim' => $this->request->getVar('nim'),
                     'nama_lengkap' => $this->request->getVar('nama_lengkap'),
+                    'prodi' => $this->request->getVar('prodi'),
+                    'alamat' => $this->request->getVar('alamat'),
                     'no_telp' => $this->request->getVar('no_telp'),
                     'email' => $this->request->getVar('email'),
                     'level' => $this->request->getVar('group_id'),
@@ -125,16 +131,18 @@ class Operator extends BaseController
                 ];
             }
 
-            $this->operatorModel->update($id, $operator);
+            $this->mahasiswaModel->update($id, $mahasiswa);
         } else {
 
             // hapus
-            $this->operatorModel->delete($id);
+            $this->mahasiswaModel->delete($id);
 
             if ($pass == null) {
-                $this->operatorModel->save([
-                    'nip' => $this->request->getVar('nip'),
+                $this->mahasiswaModel->save([
+                    'nim' => $this->request->getVar('nim'),
                     'nama_lengkap' => $this->request->getVar('nama_lengkap'),
+                    'prodi' => $this->request->getVar('prodi'),
+                    'alamat' => $this->request->getVar('alamat'),
                     'no_telp' => $this->request->getVar('no_telp'),
                     'email' => $this->request->getVar('email'),
                     'level' => $this->request->getVar('group_id'),
@@ -151,9 +159,11 @@ class Operator extends BaseController
                 $pass_hash = password_hash(base64_encode(
                     hash('sha384', $password, true)
                 ), PASSWORD_DEFAULT, $options);
-                $this->operatorModel->save([
-                    'nip' => $this->request->getVar('nip'),
+                $this->mahasiswaModel->save([
+                    'nim' => $this->request->getVar('nim'),
                     'nama_lengkap' => $this->request->getVar('nama_lengkap'),
+                    'prodi' => $this->request->getVar('prodi'),
+                    'alamat' => $this->request->getVar('alamat'),
                     'no_telp' => $this->request->getVar('no_telp'),
                     'email' => $this->request->getVar('email'),
                     'level' => $this->request->getVar('group_id'),
@@ -178,14 +188,14 @@ class Operator extends BaseController
                 'user_id' => $user_id,
             ]);
         }
-        session()->setFlashdata('pesan', 'Data Operator berhasil diupdate.');
-        return redirect()->to('/operator');
+        session()->setFlashdata('pesan', 'Data mahasiswa berhasil diupdate.');
+        return redirect()->to('/mahasiswa');
     }
     public function delete($id)
     {
-        $this->operatorModel->delete($id);
+        $this->mahasiswaModel->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus.');
-        return redirect()->to('/operator');
+        return redirect()->to('/mahasiswa');
     }
 
 
