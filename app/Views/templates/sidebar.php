@@ -1,10 +1,10 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">App Surat</a>
+            <a href="index.html">Aplikasi Beasiswa</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">AS</a>
+            <a href="index.html">AB</a>
         </div>
 
         <ul class="sidebar-menu">
@@ -16,7 +16,7 @@
         <?php if (in_groups('admin')) : ?>
 
             <ul class="sidebar-menu">
-                <li class="menu-header">Master User</li>
+                <li class="menu-header">Master</li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i><span>Master User</span></a>
                     <ul class="dropdown-menu">

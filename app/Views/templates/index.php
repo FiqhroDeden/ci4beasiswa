@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/components.css">
     <link href="<?= base_url(); ?>/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url(); ?>/assets/vendor/summernote/summernote-bs4.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/selectric.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/assets/vendor/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
 </head>
 
 <body>
@@ -60,6 +63,11 @@
     <!-- Template JS File -->
     <script src="<?= base_url(); ?>/assets/js/scripts.js"></script>
     <script src="<?= base_url(); ?>/assets/js/custom.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/page/features-post-create.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/jquery_upload_preview/jquery.uploadPreview.min.js"></script>
+    <script src="<?= base_url(); ?>/assets/vendor/summernote/summernote-bs4.js"></script>
+    <script src="<?= base_url(); ?>/assets/vendor/node_modules/selectric/public/jquery.selectric.min.js"></script>
+    <script src="<?= base_url(); ?>/assets/vendor/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
 
 
     <!-- Page Specific JS File -->
