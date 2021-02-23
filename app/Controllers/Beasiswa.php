@@ -82,25 +82,53 @@ class Beasiswa extends BaseController
                     'status_publish' => $this->request->getVar('status_publish')
                 ];
         } else {
-            $namagambar = $gambar->getRandomName();
-            $gambar->move('file/beasiswa', $namagambar);
-            unlink('file/beasiswa/' . $this->request->getVar('gambar_lama'));
-            $beasiswa =
-                [
-                    'nama_beasiswa' => $this->request->getVar('nama_beasiswa'),
-                    'kuota'         => $this->request->getVar('kuota'),
-                    'deskripsi'     => $this->request->getVar('deskripsi'),
-                    'gambar'        => $namagambar,
-                    'dibuka'        => $this->request->getVar('dibuka'),
-                    'ditutup'       => $this->request->getVar('ditutup'),
-                    'status'        => $this->request->getVar('status'),
-                    'status_publish' => $this->request->getVar('status_publish')
-                ];
+            $gambarlama = $this->request->getVar('gambar_lama');
+            if ($gambarlama == 'gambar.jpg') {
+                $namagambar = $gambar->getRandomName();
+                $gambar->move('file/beasiswa', $namagambar);
+                $beasiswa =
+                    [
+                        'nama_beasiswa' => $this->request->getVar('nama_beasiswa'),
+                        'kuota'         => $this->request->getVar('kuota'),
+                        'deskripsi'     => $this->request->getVar('deskripsi'),
+                        'gambar'        => $namagambar,
+                        'dibuka'        => $this->request->getVar('dibuka'),
+                        'ditutup'       => $this->request->getVar('ditutup'),
+                        'status'        => $this->request->getVar('status'),
+                        'status_publish' => $this->request->getVar('status_publish')
+                    ];
+            } else {
+                $namagambar = $gambar->getRandomName();
+                $gambar->move('file/beasiswa', $namagambar);
+                unlink('file/beasiswa/' . $this->request->getVar('gambar_lama'));
+                $beasiswa =
+                    [
+                        'nama_beasiswa' => $this->request->getVar('nama_beasiswa'),
+                        'kuota'         => $this->request->getVar('kuota'),
+                        'deskripsi'     => $this->request->getVar('deskripsi'),
+                        'gambar'        => $namagambar,
+                        'dibuka'        => $this->request->getVar('dibuka'),
+                        'ditutup'       => $this->request->getVar('ditutup'),
+                        'status'        => $this->request->getVar('status'),
+                        'status_publish' => $this->request->getVar('status_publish')
+                    ];
+            }
         }
 
         $this->beasiswaModel->update($id, $beasiswa);
         session()->setFlashdata('pesan', 'Data Beasiswa berhasil diupdate.');
         return redirect()->to('/beasiswa');
+    }
+
+    public function detail($id)
+    {
+        $data =
+            [
+                'title' => 'Detail Beasiswa',
+                'beasiswa' => $this->beasiswaModel->getbeasiswa($id)
+            ];
+
+        return view('beasiswa/detail', $data);
     }
 
     public function delete($id)
