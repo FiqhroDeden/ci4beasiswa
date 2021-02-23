@@ -8,7 +8,6 @@ class beasiswaModel extends Model
 {
     protected $table = 'beasiswa';
     protected $useTimestamps = true;
-    // protected $primaryKey = 'user_id';
     protected $allowedFields = ['nama_beasiswa', 'kuota', 'dibuka', 'ditutup', 'status', 'deskripsi', 'gambar', 'status_publish'];
 
     public function getbeasiswa($id = false)
@@ -20,6 +19,6 @@ class beasiswaModel extends Model
         }
 
 
-        return $this->where(['user_id' => $id])->first();
+        return $this->where(['id' => $id])->first();
     }
 }

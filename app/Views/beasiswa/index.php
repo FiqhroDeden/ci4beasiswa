@@ -47,7 +47,7 @@
                                 <td><?= $p['dibuka']; ?>
                                     <hr> <?= $p['ditutup']; ?>
                                 </td>
-                                <td><span class="badge badge-pill badge-info"><?= $p['status']; ?></span></td>
+                                <td><span class="badge badge-pill badge-<?= $p['status'] == 'Dibuka' ? 'info' : 'danger' ?>"><?= $p['status']; ?></span></td>
                                 <td>
                                     <a href="/beasiswa/edit/<?= $p['id']; ?>" class="btn btn-primary"><span class="fa fa-edit"></span></a>
                                     <a href="/beasiswa/delete/<?= $p['id']; ?>" onclick="return confirm('apakah anda yakin?');" class="btn btn-danger"><span class="fa fa-trash"></span></a>
